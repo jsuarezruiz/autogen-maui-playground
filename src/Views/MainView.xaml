@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:converters="clr-namespace:AutoGenMauiPlayground.Converters"
+    xmlns:templates="clr-namespace:AutoGenMauiPlayground.Views.Templates"
+    x:Class="AutoGenMauiPlayground.MainView"
+    Title=".NET MAUI AutoGen Playground">
+    <ContentPage.Resources>
+
+        <converters:InverseBoolConverter x:Key="InverseBoolConverter" />
+
+        <ResourceDictionary>
+            <DataTemplate x:Key="SenderMessageItemTemplate">
+                <templates:SenderMessageItemTemplate />
+            </DataTemplate>
+
+            <DataTemplate x:Key="ReceiverMessageItemTemplate">
+                <templates:ReceiverMessageItemTemplate />
+            </DataTemplate>
+
+            <templates:MessageDataTemplateSelector 
+                x:Key="MessageDataTemplateSelector"             
+                SenderMessageTemplate="{StaticResource SenderMessageItemTemplate}"    
+                ReceiverMessageTemplate="{StaticResource ReceiverMessageItemTemplate}"/>
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ScrollView>
+        <Grid>
+            <VerticalStackLayout
+                Padding="30,0"
+                Spacing="25">
+                <Label
+                    Text="Which .NET MAUI app would you like to generate?" />
+                <Entry 
+                    x:Name="UserMessage"
+                    Placeholder="Descrive your mobile Application"
+                    IsEnabled="{Binding IsLoading, Converter={StaticResource InverseBoolConverter}}"
+                    Text="{Binding Prompt, Mode=TwoWay}"/>
+                <Button
+                    x:Name="SendBtn"
+                    Text="Send" 
+                    IsEnabled="{Binding IsLoading, Converter={StaticResource InverseBoolConverter}}"
+                    Command="{Binding SendCommand}"
+                    HorizontalOptions="Fill" />
+                <Grid>
+                    <CollectionView
+                        ItemTemplate="{StaticResource MessageDataTemplateSelector}"
+                        ItemsSource="{Binding Messages}"/>
+                </Grid>
+            </VerticalStackLayout>
+            <ActivityIndicator
+                HeightRequest="40"
+                WidthRequest="40"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Color="{StaticResource Primary}"
+                IsRunning="True"
+                IsVisible="{Binding IsLoading}"/>
+        </Grid>
+    </ScrollView>
+</ContentPage>

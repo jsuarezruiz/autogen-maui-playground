@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AutoGenMauiPlayground.Views.Templates.SenderMessageItemTemplate"
+             xmlns:controls="clr-namespace:AutoGenMauiPlayground.Controls"
+             xmlns:markdown="clr-namespace:Drastic.Markdown;assembly=Drastic.Markdown.Maui">
+    <ContentView.Resources>
+        <ResourceDictionary>
+
+            <controls:CustomMarkdownTheme x:Key="CustomMarkdownTheme" />
+            
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <Grid
+        BackgroundColor="{StaticResource Gray600}"
+        Margin="0, 6">
+        <markdown:MarkdownView 
+            Theme="{AppThemeBinding Dark={StaticResource DarkTheme}, Light={StaticResource LightTheme}}"
+            Background="Transparent"
+            Markdown="{Binding Text}" />
+    </Grid>
+</ContentView>
