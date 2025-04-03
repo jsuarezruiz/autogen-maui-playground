@@ -3,7 +3,11 @@
 This project is designed to explore and experiment with the integration of AI capabilities, using **AutoGen** into .NET MAUI applications. It serves as a sandbox to test and create solutions that leverage cutting-edge AI tools.
 Provides developers with a hands-on resource to learn about combining AutoGen with mobile and desktop app development.
 
-### Setup
+**The sample use multiple AI agents to generate a mobile app from a simple prompt**.
+
+![AutoGen MAUI Playground](images/autogen-maui-playground.gif)
+
+### 🛠️ Setup
 
 Clone the repository:
 
@@ -29,7 +33,7 @@ dotnet build
 dotnet run
 ```
 
-### How It Works
+### 💡 How It Works
 
 * The user provides a prompt describing an application.
 * AI agents, such as the SpecCreatorAgent and CodeCreatorAgent, process the input generating a detailed Spec and an App navigation diagram.
@@ -37,3 +41,15 @@ dotnet run
 * An AI agent uses the generated Spec to generate the .NET MAUI App code.
 * Middleware orchestrates the interactions between agents, resulting in structured specifications, designs, and generated code.
 * Output is displayed in the .NET MAUI app interface further exploration.
+
+### 🧩 Contributing
+
+Contributions are welcome! If you'd like to contribute:
+
+1. Fork the repository.
+1. Create a new branch for your changes.
+2. Submit a pull request with a clear description of the enhancements or fixes.
+
+### 📄 License
+
+This project is licensed under the MIT License.
